@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02 - Propiedades dinámicas</title>
+    <style>
+        .boton {
+            background-color: purple;
+            color: white;
+            padding: 10px 30px;
+            display: block;
+            border-radius: 0 0 10px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 1px goldenrod;
+            font-family: sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <boton v-for="boton in botones" :color="boton.color" :enlace="boton.enlace" :anchor-text="boton.anchorText"></boton>
+
+
+<!--    <boton color="blue" enlace="https://www.google.es" anchor-text="Google"></boton>-->
+<!--    <boton color="purple" enlace="https://escuelavue.es" anchor-text="Escuela Vue"></boton>-->
+<!--    <boton color="green" anchor-text="Jandepora"></boton>-->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    Vue.component('boton', {
+        // props: ["color", "enlace", "anchorText"],
+        props: {
+            color: String,
+            enlace: {
+                type: String,
+                default: "https://www.google.es"
+            },
+            anchorText: String
+        },
+        template: `<a class="boton" :style="'background-color:' + color" :href="enlace">{{ anchorText }}</a>`,
+    });
+
+    new Vue({
+        el: "#app",
+        data: {
+            botones: [
+                {enlace: "https://escuelavue.es", anchorText: "Escuela Vue", color: "aquamarine"},
+                {enlace: "https://google.es", anchorText: "Google", color: "red"},
+                {enlace: "https://20minutos.es", anchorText: "20 minutos", color: "blue"},
+            ]
+        },
+    });
+
+    Vue.config.devtools = true;
+</script>
+</body>
+</html>
