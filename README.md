@@ -1,4 +1,4 @@
 # Curso de componentes de Vue
-Curso de componentes de Vue de escuelavue.es
+Curso de componentes de Vue de https://escuelavue.es
 
 **Estado: In progress.**
